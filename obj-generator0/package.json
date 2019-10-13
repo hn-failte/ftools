@@ -1,0 +1,14 @@
+{
+  "name": "obj-generator",
+  "version": "0.0.1",
+  "description": "obj generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

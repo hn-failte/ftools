@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            min-height: 100%;
+            width: 100%;
+        }
+        .container > ul {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        .container > ul > li {
+            height: 40px;
+            width: 100%;
+            margin: 5px 0;
+            list-style-type: none;
+            text-align: center;
+        }
+        .monsterValueName {
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            width: 100px;
+            background: orange;
+        }
+        .monsterValue {
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            width: 200px;
+            background: yellowgreen;
+        }
+    </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <div class="container">
+        <ul>
+            <li><div class="monsterValueName">name</div><div class="monsterValue"></div></li>
+            <li><div class="monsterValueName"></div><div class="monsterValue"></div></li>
+            <li><div class="monsterValueName"></div><div class="monsterValue"></div></li>
+            <li><button onclick="generate">do</button></li>
+        </ul>
+    </div>
+  </body>
+  <script src="./index.js"></script>
+  <script>
+      var inputs = document.querySelectorAll("div.monsterValueName,div.monsterValue");
+      inputs.forEach(item => item.contentEditable = true);
+      var ajax = (url = '', data = {}) => {
+          if(url === '') return;
+          var xhr = XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHttp")
+      }
+  </script>
+</html>

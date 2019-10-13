@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            min-height: 100%;
+            width: 100%;
+        }
+        .container > ul {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        .container > ul > li {
+            height: 40px;
+            width: 100%;
+            margin: 5px 0;
+            list-style-type: none;
+            text-align: center;
+        }
+        .monsterValueName {
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            width: 100px;
+            background: orange;
+        }
+        .monsterValue {
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            width: 200px;
+            background: yellowgreen;
+        }
+    </style>
+    <script>
+        document.documentElement.contentEditable = true;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li><div class="monsterValueName">name</div><div class="monsterValue"></div></li>
+            <li><div class="monsterValueName"></div><div class="monsterValue"></div></li>
+            <li><div class="monsterValueName"></div><div class="monsterValue"></div></li>
+        </ul>
+    </div>
+</body>
+<script src="./index.js"></script>
+</html>
