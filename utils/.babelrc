@@ -1,0 +1,19 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "browsers": [
+                        "Chrome > 40",
+                        "Android >= 2.3",
+                        "and_chr > 40",
+                        "and_uc > 10.0",
+                        "and_qq > 1.0"
+                    ]
+                }
+            }
+        ]
+    ],
+    "plugins": ["@babel/plugin-transform-object-assign"]
+}
