@@ -45,19 +45,69 @@
     <div class="container">
         <ul>
             <li><div class="monsterValueName">name</div><div class="monsterValue"></div></li>
-            <li><div class="monsterValueName"></div><div class="monsterValue"></div></li>
-            <li><div class="monsterValueName"></div><div class="monsterValue"></div></li>
-            <li><button onclick="generate">do</button></li>
+            <li><div class="monsterValueName">type</div><div class="monsterValue"></div></li>
+            <li><div class="monsterValueName">attack</div><div class="monsterValue"></div></li>
+            <li><div class="monsterValueName">defence</div><div class="monsterValue"></div></li>
+            <li><div class="monsterValueName">description</div><div class="monsterValue"></div></li>
+            <li><button onclick="generate()">do</button></li>
         </ul>
     </div>
   </body>
-  <script src="./index.js"></script>
   <script>
-      var inputs = document.querySelectorAll("div.monsterValueName,div.monsterValue");
-      inputs.forEach(item => item.contentEditable = true);
-      var ajax = (url = '', data = {}) => {
-          if(url === '') return;
-          var xhr = XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHttp")
-      }
+        var inputs = document.querySelectorAll("div.monsterValueName,div.monsterValue");
+        inputs.forEach(item => item.contentEditable = true);
+
+        function get({url = '', data = {}}) {
+            if(url === '') return;
+            console.log('request', data);
+            let paramsArr = [];
+            Object.keys(data).forEach(item => {
+                paramsArr.push(`${item}=${data[item]}`);
+            })
+            let params = paramsArr.join('&')
+            url = /\?/.test(url) ? (url + '&' + params) : (url + '?' + params)
+            return new Promise((resolve, reject) => {
+                var xhr = XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHttp");
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4) {
+                        let res = '';
+                        try {
+                            res = JSON.parse(xhr.responseText)
+                            if('errCode' in res && 'msg' in res && 'data' in res) resolve(res)
+                        } catch(err) {
+                            res = 'responseText could not parse to object';
+                        }
+                        reject(res);
+                    }
+                }
+                xhr.open('get', url, null)
+                xhr.send()
+            }).then(res => {
+                return res
+            }, rej => {
+                throw new Error(rej)
+            }).catch(err => {
+                throw new Error(err)
+            })
+        }
+        function generate() {
+            let monsterValueName = document.getElementsByClassName('monsterValueName');
+            let monsterValue = document.getElementsByClassName('monsterValue');
+            let data = {};
+            for(let i = 0; i < monsterValueName.length; i++) {
+                let valueName = monsterValueName[i].innerText.trim();
+                let value = monsterValue[i].innerText.trim();
+                if(valueName !== '' && value !== '') data[valueName] = value;
+            }
+            if(Object.keys(data).length === 0) alert('no input')
+            get({
+                url: '/api/generate',
+                data
+            }).then(res=>{
+                console.log(res)
+            }).catch(err => {
+                console.log(err)
+            })
+        }
   </script>
 </html>
