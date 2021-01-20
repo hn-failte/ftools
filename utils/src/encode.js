@@ -18,13 +18,10 @@ export function fromXtoY(num, X, Y) {
             if (num.search(/^0x/i) >= 0) return parseInt(num, 16);
             else if (num.search(/^0/i) >= 0) return parseInt(num, 8);
             else return parseInt(num, 10);
-            break;
         case 2:
             return parseInt(num, X);
-            break;
         case 3:
             return parseInt(num, X).toString(Y);
-            break;
         default:
             return;
     }

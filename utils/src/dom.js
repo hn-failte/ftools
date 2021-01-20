@@ -6,7 +6,7 @@
  */
 export function $(arg) {
     var selector;
-    if (arg.search(/\#/g) > -1) {
+    if (arg.search(/#/g) > -1) {
         selector = document.querySelector(arg);
     } else {
         selector = document.querySelectorAll(arg);
@@ -68,9 +68,9 @@ export function getElementsByClassName(className) {
  * @param {Element} target
  */
 export function insertAfter(insert, target) {
-    insert.parent.lastElementChild === insert ?
-        insert.parentElement.appendChild(target) :
-        insert.parentElement.insertBefore(target, insert.nextElementSibling);
+    insert.parent.lastElementChild === insert
+        ? insert.parentElement.appendChild(target)
+        : insert.parentElement.insertBefore(target, insert.nextElementSibling);
 }
 
 /**
@@ -135,11 +135,11 @@ export function getEvent(event) {
  * @returns {Number}
  */
 export function getKeyCode(event) {
-    return event.keyCode ?
-        event.keyCode :
-        event.which ?
-        event.which :
-        event.charCode;
+    return event.keyCode
+        ? event.keyCode
+        : event.which
+        ? event.which
+        : event.charCode;
 }
 
 /**
@@ -168,7 +168,9 @@ export function getButton(event) {
  * @param {*} event
  */
 export function stopBubble(event) {
-    event.stopPropagation ? event.stopPropagation() : (event.cancelBubble = true);
+    event.stopPropagation
+        ? event.stopPropagation()
+        : (event.cancelBubble = true);
 }
 
 /**
@@ -195,9 +197,9 @@ export function getTarget(event) {
  * @description make noSelection both in IE8 and high level browser
  */
 export function noSelection() {
-    window.getSelection ?
-        window.getSelection().removeAllRanges() :
-        document.selection.empty();
+    window.getSelection
+        ? window.getSelection().removeAllRanges()
+        : document.selection.empty();
 }
 
 /**
@@ -208,9 +210,9 @@ export function noSelection() {
  * @returns {Style}
  */
 export function getStyle(el, attr) {
-    return window.getComputedStyle ?
-        window.getComputedStyle(el)[attr] :
-        el.currentStyle[attr];
+    return window.getComputedStyle
+        ? window.getComputedStyle(el)[attr]
+        : el.currentStyle[attr];
 }
 
 /**
@@ -250,9 +252,9 @@ export function animated_variable(el, target, attr) {
             clearInterval(el.timer);
         } else {
             step =
-                target - el.offsetLeft < 0 ?
-                Math.floor((target - el.offsetLeft) / 10) :
-                Math.ceil((target - el.offsetLeft) / 10);
+                target - el.offsetLeft < 0
+                    ? Math.floor((target - el.offsetLeft) / 10)
+                    : Math.ceil((target - el.offsetLeft) / 10);
             el.style[attr] = el.offsetLeft + step + "px";
         }
     }, 10);
@@ -276,9 +278,9 @@ export function animated_objects(el, target, attr) {
             clearInterval(el.timer);
         } else {
             step =
-                target - parseInt(getStyle(el, attr)) < 0 ?
-                Math.floor((target - parseInt(getStyle(el, attr))) / 10) :
-                Math.ceil((target - parseInt(getStyle(el, attr))) / 10);
+                target - parseInt(getStyle(el, attr)) < 0
+                    ? Math.floor((target - parseInt(getStyle(el, attr))) / 10)
+                    : Math.ceil((target - parseInt(getStyle(el, attr))) / 10);
             el.style[attr] = parseInt(getStyle(el, attr)) + step + "px";
         }
     }, 10);
@@ -303,10 +305,15 @@ export function animated_attr(el, target, attr) {
                 clearInterval(el.timer);
             } else {
                 step =
-                    target - parseInt(getStyle(el, attr) * 100) < 0 ?
-                    Math.floor((target - parseInt(getStyle(el, attr) * 100)) / 10) :
-                    Math.ceil((target - parseInt(getStyle(el, attr) * 100)) / 10);
-                el.style[attr] = (parseInt(getStyle(el, attr) * 100) + step) / 100;
+                    target - parseInt(getStyle(el, attr) * 100) < 0
+                        ? Math.floor(
+                              (target - parseInt(getStyle(el, attr) * 100)) / 10
+                          )
+                        : Math.ceil(
+                              (target - parseInt(getStyle(el, attr) * 100)) / 10
+                          );
+                el.style[attr] =
+                    (parseInt(getStyle(el, attr) * 100) + step) / 100;
             }
         } else if (attr == "zIndex") {
             el.style[attr] = target;
@@ -317,9 +324,13 @@ export function animated_attr(el, target, attr) {
                 clearInterval(el.timer);
             } else {
                 step =
-                    target - parseInt(getStyle(el, attr)) < 0 ?
-                    Math.floor((target - parseInt(getStyle(el, attr))) / 10) :
-                    Math.ceil((target - parseInt(getStyle(el, attr))) / 10);
+                    target - parseInt(getStyle(el, attr)) < 0
+                        ? Math.floor(
+                              (target - parseInt(getStyle(el, attr))) / 10
+                          )
+                        : Math.ceil(
+                              (target - parseInt(getStyle(el, attr))) / 10
+                          );
                 el.style[attr] = parseInt(getStyle(el, attr)) + step + "px";
             }
         }
@@ -346,14 +357,19 @@ export function animated_mutiattr(el, target) {
                     el.style[item] = target[item] / 100;
                 } else {
                     step =
-                        target[item] - parseInt(getStyle(el, item) * 100) < 0 ?
-                        Math.floor(
-                            (target[item] - parseInt(getStyle(el, item) * 100)) / 10
-                        ) :
-                        Math.ceil(
-                            (target[item] - parseInt(getStyle(el, item) * 100)) / 10
-                        );
-                    el.style[item] = (parseInt(getStyle(el, item) * 100) + step) / 100;
+                        target[item] - parseInt(getStyle(el, item) * 100) < 0
+                            ? Math.floor(
+                                  (target[item] -
+                                      parseInt(getStyle(el, item) * 100)) /
+                                      10
+                              )
+                            : Math.ceil(
+                                  (target[item] -
+                                      parseInt(getStyle(el, item) * 100)) /
+                                      10
+                              );
+                    el.style[item] =
+                        (parseInt(getStyle(el, item) * 100) + step) / 100;
                     flag = false;
                 }
             } else if (item == "zIndex") {
@@ -365,9 +381,17 @@ export function animated_mutiattr(el, target) {
                     el.style[item] = target[item] + "px";
                 } else {
                     step =
-                        target[item] - parseInt(getStyle(el, item)) < 0 ?
-                        Math.floor((target[item] - parseInt(getStyle(el, item))) / 10) :
-                        Math.ceil((target[item] - parseInt(getStyle(el, item))) / 10);
+                        target[item] - parseInt(getStyle(el, item)) < 0
+                            ? Math.floor(
+                                  (target[item] -
+                                      parseInt(getStyle(el, item))) /
+                                      10
+                              )
+                            : Math.ceil(
+                                  (target[item] -
+                                      parseInt(getStyle(el, item))) /
+                                      10
+                              );
                     el.style[item] = parseInt(getStyle(el, item)) + step + "px";
                     flag = false;
                 }
@@ -399,7 +423,10 @@ export function animated_chain(el, target, callback) {
                     el.style[item] = target[item] / 100;
                 } else {
                     step_0 = target[item] - getStyle(el, item) * 100;
-                    step = step_0 < 0 ? Math.floor(step_0 / 10) : Math.ceil(step_0 / 10);
+                    step =
+                        step_0 < 0
+                            ? Math.floor(step_0 / 10)
+                            : Math.ceil(step_0 / 10);
                     el.style[item] = (getStyle(el, item) * 100 + step) / 100;
                     flag = false;
                 }
@@ -412,7 +439,10 @@ export function animated_chain(el, target, callback) {
                     el.style[item] = target[item] + "px";
                 } else {
                     step_0 = target[item] - parseInt(getStyle(el, item));
-                    step = step_0 < 0 ? Math.floor(step_0 / 10) : Math.ceil(step_0 / 10);
+                    step =
+                        step_0 < 0
+                            ? Math.floor(step_0 / 10)
+                            : Math.ceil(step_0 / 10);
                     el.style[item] = parseInt(getStyle(el, item)) + step + "px";
                     flag = false;
                 }
@@ -463,17 +493,17 @@ export function DragableBox(type = "div", width = 100, height = 100) {
         var l = e.clientX - this.offsetX;
         var t = e.clientY - this.offsetY;
         l =
-            l < 0 ?
-            0 :
-            l > winX - this.el.offsetWidth ?
-            winX - this.el.offsetWidth :
-            l;
+            l < 0
+                ? 0
+                : l > winX - this.el.offsetWidth
+                ? winX - this.el.offsetWidth
+                : l;
         t =
-            t < 0 ?
-            0 :
-            t > winY - this.el.offsetHeight ?
-            winY - this.el.offsetHeight :
-            t;
+            t < 0
+                ? 0
+                : t > winY - this.el.offsetHeight
+                ? winY - this.el.offsetHeight
+                : t;
         this.el.style.left = l + "px";
         this.el.style.top = t + "px";
     }.bind(this);

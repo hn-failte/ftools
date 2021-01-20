@@ -13,7 +13,7 @@ export const getAllCookie = () => {
         ckobj[ck[i][0]] = ck[i][1];
     }
     return ckobj;
-}
+};
 
 /**
  * @function getCookie
@@ -24,7 +24,7 @@ export const getAllCookie = () => {
 export const getCookie = (key) => {
     let obj = getAllCookie();
     return obj[key];
-}
+};
 
 /**
  * @function setCookie
@@ -41,7 +41,7 @@ export const setCookie = (key, value, day) => {
         let date = new Date(new Date().getTime() + day * 8.64e7);
         document.cookie = key + "=" + value + ";expires=" + date;
     }
-}
+};
 
 /**
  * @function deleteCookie
@@ -50,7 +50,7 @@ export const setCookie = (key, value, day) => {
  */
 export const deleteCookie = (key) => {
     setCookie(key, "", -1);
-}
+};
 
 /**
  * @function deleteAllCookie
@@ -61,4 +61,4 @@ export const deleteAllCookie = () => {
     for (let key in obj) {
         deleteCookie(key);
     }
-}
+};

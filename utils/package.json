@@ -1,45 +1,45 @@
 {
-  "name": "@ftool/utils",
-  "version": "1.0.0",
-  "description": "hn-failte的工具库",
-  "main": "./src/index.js",
-  "scripts": {
-    "build": "concurrently \"rollup -c rollup.config.js\""
-  },
-  "keywords": [],
-  "author": {
-    "name": "Failte",
-    "email": "failte@163.com"
-  },
-  "license": "ISC",
-  "deprecated": false,
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.3",
-    "@babel/plugin-external-helpers": "^7.2.0",
-    "@babel/plugin-transform-object-assign": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.3.4",
-    "@babel/preset-env": "^7.3.1",
-    "babel-eslint": "^10.0.1",
-    "babel-preset-es2015-rollup": "^3.0.0",
-    "concurrently": "^4.1.0",
-    "eslint": "^5.2.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "rollup": "^1.6.0",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.2.1",
-    "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-resolve": "^4.0.1",
-    "rollup-plugin-terser": "^4.0.4",
-    "rollup-plugin-uglify": "^6.0.2"
-  },
-  "dependencies": {
-    "rollup": "^1.17.0"
-  }
+    "name": "@ftool/utils",
+    "version": "1.0.0",
+    "description": "hn-failte的工具库",
+    "main": "./src/index.js",
+    "scripts": {
+        "build": "concurrently \"rollup -c rollup.config.js\""
+    },
+    "keywords": [],
+    "author": {
+        "name": "Failte",
+        "email": "failte@163.com"
+    },
+    "license": "ISC",
+    "deprecated": false,
+    "devDependencies": {
+        "@babel/cli": "^7.2.3",
+        "@babel/core": "^7.3.3",
+        "@babel/plugin-external-helpers": "^7.2.0",
+        "@babel/plugin-transform-object-assign": "^7.2.0",
+        "@babel/plugin-transform-runtime": "^7.3.4",
+        "@babel/preset-env": "^7.3.1",
+        "babel-eslint": "^10.0.1",
+        "babel-preset-es2015-rollup": "^3.0.0",
+        "concurrently": "^4.1.0",
+        "eslint": "^5.2.0",
+        "eslint-config-standard": "^11.0.0",
+        "eslint-friendly-formatter": "^4.0.1",
+        "eslint-plugin-import": "^2.13.0",
+        "eslint-plugin-node": "^7.0.1",
+        "eslint-plugin-promise": "^3.8.0",
+        "eslint-plugin-standard": "^3.1.0",
+        "rollup": "^1.6.0",
+        "rollup-plugin-babel": "^4.3.2",
+        "rollup-plugin-commonjs": "^9.2.1",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "rollup-plugin-node-resolve": "^4.0.1",
+        "rollup-plugin-terser": "^4.0.4",
+        "rollup-plugin-uglify": "^6.0.2"
+    },
+    "dependencies": {
+        "rollup": "^1.17.0"
+    }
 }

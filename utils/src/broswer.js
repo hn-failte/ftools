@@ -47,7 +47,7 @@ export function isPC() {
         "SymbianOS",
         "Windows Phone",
         "iPad",
-        "iPod"
+        "iPod",
     ];
     var flag = true;
     for (var v = 0; v < Agents.length; v++) {
@@ -61,5 +61,5 @@ export function isPC() {
 
 export default {
     getIEVersion,
-    isPC
-}
+    isPC,
+};
